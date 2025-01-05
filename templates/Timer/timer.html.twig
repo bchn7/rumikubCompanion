@@ -1,0 +1,125 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="flex flex-col items-center justify-center min-h-screen">
+        <div id="box" class="bg-slate-600 p-8 rounded-lg mb-4 shadow-xl shadow-black">
+            <div id="timer" class="font-bold text-[256px] box-border h-96 w-96 p-8 flex items-center justify-center text-white"></div>
+        </div>
+        <div class="flex justify-between w-full max-w-4xl mt-4">
+            <button id="startButton" class="bg-slate-600 text-white font-bold text-5xl p-4 rounded-lg shadow-xl shadow-black">Start Timer</button>
+            <button id="endRound" class="bg-slate-600 text-white font-bold text-5xl p-4 rounded-lg shadow-xl shadow-black">End Round</button>
+        </div>
+    </div>
+
+    <script>
+        let timeLeft = 45; // Starting time
+        const timerElement = document.getElementById('timer');
+        const boxElement = document.getElementById('box');
+
+        const tickSound = new Audio('{{ asset('click.wav') }}');
+        const dingSound = new Audio('{{ asset('ding.mp3') }}');
+
+        let timerInterval;
+        let flashInterval;
+        let soundInterval;
+        let fastFlashingStarted = false; // To avoid reassigning the faster flash interval
+
+        function updateTimer() {
+            if (timeLeft > 0) {
+                timeLeft--;
+                timerElement.textContent = timeLeft;
+
+                // Play sound at 15 seconds
+                if (timeLeft == 15) {
+                    tickSound.play();
+                }
+
+                // Flash every 1 second when time is between 10 and 5 seconds
+                if (timeLeft <= 10 && timeLeft > 5) {
+                    if (!flashInterval) {
+                        flashInterval = setInterval(() => {
+                            boxElement.classList.toggle('bg-slate-600');
+                            boxElement.classList.toggle('bg-red-500'); // Toggle red color
+                        }, 1000); // Flash every second
+                    }
+                }
+
+                // Flash every 200ms when less than or equal to 5 seconds, but only once
+                if (timeLeft <= 5 && !fastFlashingStarted) {
+                    fastFlashingStarted = true; // Flag to avoid reassigning
+
+                    // Clear the slower flashing interval only once
+                    if (flashInterval) {
+                        clearInterval(flashInterval);
+                    }
+
+                    // Start faster flashing
+                    flashInterval = setInterval(() => {
+                        boxElement.classList.toggle('bg-slate-600');
+                        boxElement.classList.toggle('bg-red-500'); // Toggle red color
+                    }, 200); // Flash every 200ms
+
+                    // Play ticking sound every second
+                    soundInterval = setInterval(() => {
+                        tickSound.play();
+                    }, 1000); // Play sound every second
+                }
+            } else {
+                boxElement.classList.remove('bg-slate-600');
+                boxElement.classList.add('bg-red-500'); // Ensure it's red when timer reaches 0
+                dingSound.play();
+                clearInterval(timerInterval); // Stop the timer
+                if (flashInterval) {
+                    clearInterval(flashInterval); // Stop flashing effect
+                }
+                if (soundInterval) {
+                    clearInterval(soundInterval); // Stop ticking sound
+                }
+            }
+        }
+
+        // Start the timer
+        function startTimer() {
+            // Clear any existing intervals first
+            clearInterval(timerInterval);
+            clearInterval(flashInterval);
+            clearInterval(soundInterval);
+            fastFlashingStarted = false; // Reset the flag for fast flashing
+
+            // Start the timer interval
+            timerInterval = setInterval(updateTimer, 1000);
+        }
+
+        document.getElementById('startButton').addEventListener('click', function() {
+            startTimer(); // Start the timer
+        });
+
+        // Reset timer when space bar is pressed
+        window.addEventListener('keydown', function(event) {
+            if (event.code === 'Space') {
+                // Reset time and display
+                boxElement.classList.add('bg-slate-600');
+                boxElement.classList.remove('bg-red-500');
+                timeLeft = 45;
+                timerElement.textContent = timeLeft;
+
+                // Clear existing intervals before starting a new one
+                clearInterval(timerInterval);
+                clearInterval(flashInterval);
+                clearInterval(soundInterval);
+
+                fastFlashingStarted = false; // Reset the fast flashing flag
+
+                // Restart the timer
+                startTimer();
+            }
+        });
+
+        // End round: Redirect to the 'rummikub_add_points' route
+        document.getElementById('endRound').addEventListener('click', function() {
+            window.location.href = '{{ path('rummikub_add_points') }}'; // Redirect to add points page
+        });
+    </script>
+
+{% endblock %}

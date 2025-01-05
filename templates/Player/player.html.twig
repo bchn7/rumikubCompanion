@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="flex flex-col items-center justify-center min-h-screen">
+        <!-- Adjusted Box with Table -->
+        <div id="box" class="bg-slate-600 p-8 rounded-lg mb-4 shadow-xl shadow-black max-w-4xl w-full">
+            <div id="timer" class="font-bold text-[48px] box-border h-full p-8 flex flex-col items-center justify-center">
+
+                <!-- Players Table -->
+                <table class="min-w-full table-auto bg-gray-800 text-white rounded-lg overflow-hidden shadow-lg">
+                    <thead>
+                    <tr>
+                        <th class="px-4 py-2 text-left">Name</th>
+                        <th class="px-4 py-2 text-left">Score</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for player in players %}
+                        <tr class="border-b border-gray-600">
+                            <td class="px-4 py-2">{{ player.Name }}</td>
+                            <td class="px-4 py-2">{{ player.Score }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Add Player and Next Round Buttons -->
+        <div class="mt-4 flex space-x-4">
+            <a href="{{ path('add_player') }}">
+                <button class="bg-slate-600 text-white px-6 py-3 rounded shadow-md hover:bg-slate-700">
+                    Add Player
+                </button>
+            </a>
+
+            <a href="{{ path('timer_home') }}">
+                <button class="bg-slate-600 text-white px-6 py-3 rounded shadow-md hover:bg-slate-700">
+                    Next Round
+                </button>
+            </a>
+        </div>
+    </div>
+
+{% endblock %}
