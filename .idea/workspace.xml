@@ -5,21 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37d1772c-91a1-4877-98be-eae7c83c050f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/postcss.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/RumikubApp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/RumikubApp.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/149bd9a5-6363-473b-b350-9053f990aad2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/149bd9a5-6363-473b-b350-9053f990aad2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/docker/nginx.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/php/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/docker/php/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postcss.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/docker/php/docker-entrypoint.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,12 +114,12 @@
       <window_info id="Space Code Reviews" />
       <window_info id="Bookmarks" side_tool="true" />
       <window_info id="Commit_Guest" />
-      <window_info active="true" id="Pull Requests" visible="true" weight="0.19765624" />
+      <window_info id="Pull Requests" weight="0.19765624" />
       <window_info id="Commit" />
       <window_info id="Merge Requests" />
       <window_info id="Structure" side_tool="true" />
       <window_info id="Robo tasks" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.19765624" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19765624" />
       <window_info anchor="bottom" id="TODO" />
       <window_info anchor="bottom" id="File Transfer" />
       <window_info anchor="bottom" id="Database Changes" />
@@ -174,7 +161,7 @@
       <workItem from="1736097958513" duration="597000" />
       <workItem from="1736116530255" duration="49000" />
       <workItem from="1738365069238" duration="44000" />
-      <workItem from="1738365118772" duration="4939000" />
+      <workItem from="1738365118772" duration="5573000" />
     </task>
     <servers />
   </component>
