@@ -37,12 +37,11 @@ COPY . /var/www/html
 # Set the working directory to /var/www/html
 WORKDIR /var/www/html
 
-# Install dependencies (e.g., Composer, npm)
-RUN composer install --no-plugins --no-scripts
-RUN npm install
+# Set the entrypoint
+ENTRYPOINT ["docker-entrypoint.sh"]
 
 # Expose the PHP-FPM port
 EXPOSE 9000
 
-# Start the PHP-FPM and Tailwind build process with watch mode
-CMD php bin/console tailwind:build --watch & php-fpm
+# CMD is optional as our entrypoint script calls exec php-fpm.
+CMD ["php-fpm"]
